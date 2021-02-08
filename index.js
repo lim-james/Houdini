@@ -1,6 +1,8 @@
 const Discord = require("discord.js");
 const config = require("./config.json");
 
+import Time from './time';
+
 const client = new Discord.Client();
 client.login(config.BOT_TOKEN);
 
@@ -17,7 +19,7 @@ client.on("message", message => {
             if (value == "off") {
 
             } else {
-                const t = Number.parseInt(value);
+                const t = Time.parseDuration(value);
                 message.channel.send(`:cloud_tornado: Messages will disappear after ${t}s. ${message.createdTimestamp}`);
             }
         }
